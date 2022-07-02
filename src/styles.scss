@@ -1,0 +1,73 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+input:-webkit-autofill,
+input:-webkit-autofill:hover,
+input:-webkit-autofill:focus,
+input:-webkit-autofill:active {
+  -webkit-box-shadow: 0 0 0 30px white inset !important;
+  -webkit-text-fill-color: black;
+  @media (prefers-color-scheme: dark) {
+    -webkit-box-shadow: 0 0 0 30px black inset !important;
+    -webkit-text-fill-color: white;
+  }
+}
+
+.react-datepicker {
+  &-popper {
+    @apply relative z-10 rounded-lg border-2 border-gray-500 bg-white dark:bg-black;
+  }
+  &__triangle {
+    @apply absolute top-0 -mt-3 h-3 w-3 border-[0.5rem] border-t-0 border-l-transparent border-r-transparent border-b-gray-500;
+  }
+  &__month {
+    @apply flex flex-col;
+  }
+  &__week {
+    @apply flex flex-row justify-between px-2;
+  }
+  &__day {
+    &-names {
+      @apply flex flex-row justify-between p-2 text-gray-500;
+    }
+    &-name {
+      @apply m-[.1rem] flex h-8 w-8 items-center justify-end rounded-lg py-1 px-2 text-right leading-none;
+    }
+    @apply m-[.1rem] flex h-8 w-8 items-center justify-end rounded-lg py-1 px-2 text-right leading-none;
+    &:hover {
+      @apply bg-gray-500/50;
+    }
+    &--outside-month {
+      @apply text-gray-500/75;
+    }
+    &--today {
+      @apply bg-gray-500/25;
+    }
+    &--selected {
+      @apply outline outline-blue-500;
+    }
+  }
+  &__today {
+    &-button {
+      @apply mt-2 cursor-pointer border-t border-gray-500 px-2 py-1 text-center hover:bg-gray-500/25;
+    }
+  }
+}
+
+html {
+  @apply bg-gray-100 dark:bg-gray-900;
+}
+
+::-webkit-scrollbar {
+  @apply h-2 w-2;
+}
+::-webkit-scrollbar-track {
+  @apply rounded-full bg-gray-200 dark:bg-gray-800;
+}
+::-webkit-scrollbar-thumb {
+  @apply rounded-full border-2 bg-gray-500/50;
+}
+::-webkit-scrollbar-thumb:hover {
+  @apply bg-gray-500/75;
+}
