@@ -5,7 +5,6 @@ import { useSelector } from "react-redux";
 import { Link, useMatch } from "react-router-dom";
 
 export default function AdminNav() {
-  const route = useSelector((state: any) => state.route);
   const user = useSelector((state: any) => state.user);
   const currentRoute = useMatch("/admin/*");
   const { t } = useTranslation();

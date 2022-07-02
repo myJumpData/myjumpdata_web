@@ -8,13 +8,11 @@ import AuthVerify from "../common/AuthVerify";
 import Breadcrumb from "../components/Breadcrumb";
 import { Element, Folder } from "../components/Freestyle";
 import Spinner from "../components/Spinner";
-import { setRoute } from "../redux/route.action";
 import { getFreestyle, getUserFreestyle } from "../service/freestyle.service";
 import { freestyle_folder_data } from "../types/freestyle_folder_data";
 
 export default function FreestyleScreen() {
   useEffect(() => {
-    setRoute("freestyle");
     AuthVerify();
   }, []);
 

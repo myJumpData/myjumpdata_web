@@ -5,9 +5,9 @@ import { IoAdd, IoClose } from "react-icons/io5";
 import { useSelector } from "react-redux";
 import player from "react-web-track-player";
 import PlaceholderMusic from "../assets/music_placeholder.png";
+import AuthVerify from "../common/AuthVerify";
 import Button from "../components/Button";
 import { setMessage } from "../redux/message.action";
-import { setRoute } from "../redux/route.action";
 import api from "../service/api";
 import { getLibrary } from "../service/player.service";
 import { capitalize } from "../utils/capitalize";
@@ -16,7 +16,7 @@ import getApi from "../utils/getApi";
 
 export default function PlayerScreen() {
   useEffect(() => {
-    setRoute("player");
+    AuthVerify();
   }, []);
 
   const { t } = useTranslation();

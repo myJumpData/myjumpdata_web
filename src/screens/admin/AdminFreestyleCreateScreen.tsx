@@ -7,6 +7,7 @@ import { IoTrash } from "react-icons/io5";
 import { useParams } from "react-router";
 import { useNavigate } from "react-router-dom";
 import Flag from "react-world-flags";
+import AuthVerify from "../../common/AuthVerify";
 import AdminActionBar from "../../components/AdminActionBar";
 import Breadcrumb from "../../components/Breadcrumb";
 import Button from "../../components/Button";
@@ -19,6 +20,12 @@ import {
 import { getFreestyle } from "../../service/freestyle.service";
 
 export default function AdminFreestyleCreateScreen() {
+  useEffect(() => {
+    AuthVerify({
+      isAdmin: true,
+    });
+  }, []);
+
   const { t } = useTranslation();
   const params = useParams();
   const navigate = useNavigate();

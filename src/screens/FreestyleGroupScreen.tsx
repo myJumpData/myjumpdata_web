@@ -1,18 +1,16 @@
 import classNames from "classnames";
-import i18next from "i18next";
 import { useEffect, useState } from "react";
 import { useTranslation } from "react-i18next";
 import { IoFilter, IoGrid } from "react-icons/io5";
 import { useQuery } from "react-query";
 import { useSelector } from "react-redux";
-import { Outlet, useNavigate, useParams } from "react-router-dom";
+import { useNavigate, useParams } from "react-router-dom";
 import AuthVerify from "../common/AuthVerify";
 import Breadcrumb from "../components/Breadcrumb";
 import { Check, Element, Folder } from "../components/Freestyle";
 import { SelectInput } from "../components/Input";
 import Spinner from "../components/Spinner";
 import useBreakpoint from "../hooks/useBreakpoint";
-import { setRoute } from "../redux/route.action";
 import { setViewAuto, setViewGrid, setViewList } from "../redux/view.action";
 import { getFreestyle, getUserFreestyle } from "../service/freestyle.service";
 import { getGroup } from "../service/groups.service";
@@ -22,11 +20,7 @@ import fullname from "../utils/fullname";
 
 export default function FreestyleGroupScreen() {
   useEffect(() => {
-    setRoute("group");
     AuthVerify();
-    i18next.loadNamespaces("freestyle").then(() => {
-      setLoaded(true);
-    });
   }, []);
 
   const params = useParams();
@@ -44,8 +38,6 @@ export default function FreestyleGroupScreen() {
   } = useQuery(["freestyle", freestyle], async () => {
     return await getFreestyle(freestyle);
   });
-
-  const [loaded, setLoaded] = useState(false);
 
   const [groupName, setGroupName] = useState("");
   const [userSelect, setUserSelect] = useState([]);
@@ -87,10 +79,6 @@ export default function FreestyleGroupScreen() {
     });
     // eslint-disable-next-line react-hooks/exhaustive-deps
   }, [params]);
-
-  if (!loaded) {
-    return <Outlet />;
-  }
 
   return (
     <>

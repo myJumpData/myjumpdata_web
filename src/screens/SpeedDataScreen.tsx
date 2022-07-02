@@ -15,7 +15,6 @@ import Button from "../components/Button";
 import { DateInput, SelectInput, TextInput } from "../components/Input";
 import { SpeedDataInput } from "../components/SpeedData";
 import { switchPivot } from "../redux/pivot.action";
-import { setRoute } from "../redux/route.action";
 import { getGroup } from "../service/groups.service";
 import {
   getScoreDataHigh,
@@ -30,7 +29,6 @@ import fullname from "../utils/fullname";
 
 export default function SpeedDataScreen() {
   useEffect(() => {
-    setRoute("group");
     AuthVerify();
   }, []);
 

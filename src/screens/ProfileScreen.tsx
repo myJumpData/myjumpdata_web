@@ -1,15 +1,10 @@
 import { useEffect, useState } from "react";
 import { useTranslation } from "react-i18next";
 import { useParams } from "react-router";
-import { setRoute } from "../redux/route.action";
 import { getUserSearch } from "../service/users.service";
 import fullname from "../utils/fullname";
 
 export default function ProfileScreen() {
-  useEffect(() => {
-    setRoute("profile");
-  }, []);
-
   const params = useParams();
   const { t } = useTranslation();
 

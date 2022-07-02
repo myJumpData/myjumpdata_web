@@ -6,14 +6,12 @@ import { useSelector } from "react-redux";
 import { Link, useNavigate, useParams } from "react-router-dom";
 import AuthVerify from "../common/AuthVerify";
 import Button from "../components/Button";
-import { setRoute } from "../redux/route.action";
 import { getGroup, leaveGroup } from "../service/groups.service";
 import fullname from "../utils/fullname";
 import initials from "../utils/initials";
 
 export default function GroupScreen() {
   useEffect(() => {
-    setRoute("group");
     AuthVerify();
   }, []);
   const params = useParams();

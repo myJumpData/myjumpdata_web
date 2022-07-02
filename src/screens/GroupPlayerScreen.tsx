@@ -7,7 +7,6 @@ import AuthVerify from "../common/AuthVerify";
 import Button from "../components/Button";
 import { SelectInput } from "../components/Input";
 import { setMessage } from "../redux/message.action";
-import { setRoute } from "../redux/route.action";
 import api from "../service/api";
 import { getGroup } from "../service/groups.service";
 import { capitalize } from "../utils/capitalize";
@@ -17,7 +16,6 @@ import { TrackItem } from "./PlayerScreen";
 
 export default function GroupPlayerScreen() {
   useEffect(() => {
-    setRoute("group");
     AuthVerify();
   }, []);
 

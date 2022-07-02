@@ -1,18 +1,16 @@
 import { useEffect, useState } from "react";
 import { useTranslation } from "react-i18next";
+import { useNavigate } from "react-router-dom";
 import Flag from "react-world-flags";
 import AuthVerify from "../../common/AuthVerify";
 import AdminActionBar from "../../components/AdminActionBar";
 import Button from "../../components/Button";
 import { SelectInput, TextInput } from "../../components/Input";
 import { ISOCountry } from "../../Constants";
-import { setRoute } from "../../redux/route.action";
 import { createClub } from "../../service/admin.service";
-import { useNavigate } from "react-router-dom";
 
 export default function AdminClubCreateScreen() {
   useEffect(() => {
-    setRoute("admin/club");
     AuthVerify({
       isAdmin: true,
     });

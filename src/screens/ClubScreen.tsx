@@ -1,10 +1,10 @@
-import { useParams } from "react-router";
 import { useEffect, useState } from "react";
-import { getClub } from "../service/groups.service";
-import Flag from "react-world-flags";
 import { useTranslation } from "react-i18next";
-import fullname from "../utils/fullname";
+import { useParams } from "react-router";
 import { Outlet } from "react-router-dom";
+import Flag from "react-world-flags";
+import { getClub } from "../service/groups.service";
+import fullname from "../utils/fullname";
 
 export default function ClubScreen() {
   const params = useParams();
@@ -58,7 +58,7 @@ export default function ClubScreen() {
         <div className="flex flex-col">
           <span className="text-2xl font-bold">{club.name}</span>
           <div className="flex items-center space-x-2">
-            <span className="flex h-full h-8 w-8 items-center">
+            <span className="flex h-8 w-8 items-center">
               <Flag code={club.country} />
             </span>
             <span className="opacity-75">
@@ -71,8 +71,8 @@ export default function ClubScreen() {
         <span className="text-xl font-bold">{t<string>("common:coaches")}</span>
       </div>
       <div className="grid grid-cols-1 gap-4 sm:grid-cols-2 md:grid-cols-4">
-        {club.coaches.map((coach) => (
-          <UserCard user={coach} />
+        {club.coaches.map((coach, index) => (
+          <UserCard user={coach} key={index} />
         ))}
       </div>
     </>

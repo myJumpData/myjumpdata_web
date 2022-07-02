@@ -6,7 +6,6 @@ import { useParams } from "react-router";
 import AuthVerify from "../common/AuthVerify";
 import Button from "../components/Button";
 import { setMessage } from "../redux/message.action";
-import { setRoute } from "../redux/route.action";
 import api from "../service/api";
 import { getTeam } from "../service/team.service";
 import getApi from "../utils/getApi";
@@ -14,7 +13,6 @@ import { TrackItem } from "./PlayerScreen";
 
 export default function GroupPlayerScreen() {
   useEffect(() => {
-    setRoute("group");
     AuthVerify();
   }, []);
 

@@ -7,12 +7,10 @@ import AdminActionBar from "../../components/AdminActionBar";
 import Button from "../../components/Button";
 import { TextInput } from "../../components/Input";
 import { LANGUAGES } from "../../Constants";
-import { setRoute } from "../../redux/route.action";
 import { createLocalization } from "../../service/admin.service";
 
 export default function AdminLocalizationCreateScreen() {
   useEffect(() => {
-    setRoute("admin/localization");
     AuthVerify({
       isAdmin: true,
     });

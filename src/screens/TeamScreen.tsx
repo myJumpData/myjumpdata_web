@@ -7,7 +7,6 @@ import { useParams } from "react-router";
 import { Link, useNavigate } from "react-router-dom";
 import AuthVerify from "../common/AuthVerify";
 import Button from "../components/Button";
-import { setRoute } from "../redux/route.action";
 import api from "../service/api";
 import { leaveTeam } from "../service/team.service";
 import fullname from "../utils/fullname";
@@ -15,7 +14,6 @@ import initials from "../utils/initials";
 
 export default function TeamScreen() {
   useEffect(() => {
-    setRoute("group");
     AuthVerify();
   }, []);
   const params = useParams();

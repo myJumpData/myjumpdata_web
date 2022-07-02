@@ -9,7 +9,6 @@ import AuthVerify from "../common/AuthVerify";
 import Button from "../components/Button";
 import { DateInput, TextInput } from "../components/Input";
 import { SpeedDataInput } from "../components/SpeedData";
-import { setRoute } from "../redux/route.action";
 import {
   getScoreDataOwn,
   resetScoreDataOwn,
@@ -19,7 +18,6 @@ import TRACKS, { musicData } from "../tracks";
 
 export default function SpeedDataOwnScreen() {
   useEffect(() => {
-    setRoute("speeddata");
     AuthVerify();
   }, []);
 

@@ -13,13 +13,17 @@ export default function Navbar({
   bottom,
   action,
 }: {
-  navigation: { name: string; to: string; current: boolean }[];
+  navigation: {
+    name: string;
+    to: string;
+    current: RegExpMatchArray | null | undefined | boolean;
+  }[];
   dropdown?: { icon: ReactElement; name: string; to: string }[];
   dropdownButton?: ReactElement;
   bottom: {
     name: string;
     to: string;
-    current: boolean;
+    current: RegExpMatchArray | null | undefined | boolean;
     icon: ReactNode;
   }[];
   action?: { name: string; to: string };

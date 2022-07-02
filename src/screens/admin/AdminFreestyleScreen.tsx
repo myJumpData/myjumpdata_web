@@ -1,41 +1,26 @@
-import i18next from "i18next";
 import { useEffect, useState } from "react";
 import { useTranslation } from "react-i18next";
 import { FaFolder, FaFolderMinus, FaFolderPlus, FaPlus } from "react-icons/fa";
 import { HiArrowLeft, HiArrowRight, HiCheck } from "react-icons/hi";
 import { useParams } from "react-router";
-import { generatePath, Outlet, useNavigate } from "react-router-dom";
+import { generatePath, useNavigate } from "react-router-dom";
 import AuthVerify from "../../common/AuthVerify";
 import AdminActionBar from "../../components/AdminActionBar";
 import Breadcrumb from "../../components/Breadcrumb";
 import Button from "../../components/Button";
 import { TextInput } from "../../components/Input";
 import Table from "../../components/Table";
-import { setRoute } from "../../redux/route.action";
 import {
   createFreestyleGroup,
   deleteFreestyleGroup,
 } from "../../service/admin.service";
 import { getFreestyle } from "../../service/freestyle.service";
-
-type freestyle_folder_data = {
-  id: string;
-  key: string;
-  back?: boolean;
-  level?: string;
-  group?: boolean;
-  element?: boolean;
-  compiled?: boolean;
-};
+import { freestyle_folder_data } from "../../types/freestyle_folder_data";
 
 export default function AdminFreestyleScreen() {
   useEffect(() => {
-    setRoute("admin/freestyle");
     AuthVerify({
       isAdmin: true,
-    });
-    i18next.loadNamespaces("freestyle").then(() => {
-      setLoaded(true);
     });
   }, []);
   const navigate = useNavigate();
@@ -48,7 +33,6 @@ export default function AdminFreestyleScreen() {
   const [newFolderValid, setNewFolderValid] = useState<undefined | boolean>();
   const [del, setDel] = useState(false);
   const [parent, setParent] = useState("");
-  const [loaded, setLoaded] = useState(false);
 
   const getData = () => {
     getFreestyle(path).then((response: any) => {
@@ -91,26 +75,26 @@ export default function AdminFreestyleScreen() {
                 })()}
               </span>
               <span>
-                {loaded
-                  ? ((() => {
-                      if (item.back) {
-                        return t("common:back");
+                {
+                  (() => {
+                    if (item.back) {
+                      return t("common:back");
+                    }
+                    if (item.group) {
+                      return t(`freestyle:${item.key.split("_").at(-1)}`);
+                    }
+                    if (item.element) {
+                      if (item.compiled) {
+                        return item.key
+                          .split("_")
+                          .map((item) => t(`freestyle:${item}`))
+                          .join(" ");
                       }
-                      if (item.group) {
-                        return t(`freestyle:${item.key.split("_").at(-1)}`);
-                      }
-                      if (item.element) {
-                        if (item.compiled) {
-                          return item.key
-                            .split("_")
-                            .map((item) => t(`freestyle:${item}`))
-                            .join(" ");
-                        }
-                        return t(`freestyle:${item.key}`);
-                      }
-                      return "";
-                    })() as string)
-                  : null}
+                      return t(`freestyle:${item.key}`);
+                    }
+                    return "";
+                  })() as string
+                }
               </span>
             </div>
           );
@@ -194,11 +178,9 @@ export default function AdminFreestyleScreen() {
   };
 
   useEffect(() => {
-    if (loaded) {
-      getData();
-    }
+    getData();
     // eslint-disable-next-line react-hooks/exhaustive-deps
-  }, [path, loaded]);
+  }, [path]);
 
   useEffect(() => {
     setNewFolderValid(undefined);
@@ -210,10 +192,6 @@ export default function AdminFreestyleScreen() {
       }
     }
   }, [i18n, newFolder]);
-
-  if (!loaded) {
-    return <Outlet />;
-  }
 
   return (
     <>

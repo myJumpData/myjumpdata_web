@@ -1,17 +1,15 @@
 import { useEffect, useState } from "react";
 import { useTranslation } from "react-i18next";
 import { FaPlus } from "react-icons/fa";
-import AuthVerify from "../../common/AuthVerify";
-import AdminActionBar from "../../components/AdminActionBar";
-import { setRoute } from "../../redux/route.action";
 import { useNavigate, useSearchParams } from "react-router-dom";
 import Flag from "react-world-flags";
+import AuthVerify from "../../common/AuthVerify";
+import AdminActionBar from "../../components/AdminActionBar";
 import Table from "../../components/Table";
 import { getClubs } from "../../service/admin.service";
 
 export default function AdminClubScreen() {
   useEffect(() => {
-    setRoute("admin/club");
     AuthVerify({
       isAdmin: true,
     });
@@ -45,7 +43,7 @@ export default function AdminClubScreen() {
           </span>
         );
         item.country = (
-          <span className="flex h-full h-8 w-12 items-center">
+          <span className="flex h-8 w-12 items-center">
             <Flag code={item.country} />
           </span>
         );

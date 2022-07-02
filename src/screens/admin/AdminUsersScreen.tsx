@@ -7,13 +7,11 @@ import ReactTooltip from "react-tooltip";
 import AuthVerify from "../../common/AuthVerify";
 import AdminActionBar from "../../components/AdminActionBar";
 import Table from "../../components/Table";
-import { setRoute } from "../../redux/route.action";
 import { getUsers } from "../../service/admin.service";
 import initials from "../../utils/initials";
 
 export default function AdminUsersScreen() {
   useEffect(() => {
-    setRoute("admin/users");
     AuthVerify({
       isAdmin: true,
     });

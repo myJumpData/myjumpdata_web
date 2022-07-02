@@ -9,8 +9,6 @@ import AuthVerify from "../common/AuthVerify";
 import Button from "../components/Button";
 import { TextInput } from "../components/Input";
 import Spinner from "../components/Spinner";
-import { setRoute } from "../redux/route.action";
-import { searchUsers } from "../service/users.service";
 import {
   addCoachesToTeam,
   addUsersToTeam,
@@ -20,10 +18,10 @@ import {
   removeUsersFromTeam,
   updateTeamName,
 } from "../service/team.service";
+import { searchUsers } from "../service/users.service";
 
 export default function TeamSettingsScreen() {
   useEffect(() => {
-    setRoute("group");
     AuthVerify();
   }, []);
 

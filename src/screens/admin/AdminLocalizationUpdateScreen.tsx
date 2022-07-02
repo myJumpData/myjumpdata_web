@@ -6,7 +6,6 @@ import AuthVerify from "../../common/AuthVerify";
 import AdminActionBar from "../../components/AdminActionBar";
 import { TextInputInline } from "../../components/Input";
 import { LANGUAGES } from "../../Constants";
-import { setRoute } from "../../redux/route.action";
 import {
   getLocalization,
   updateLocalization,
@@ -14,7 +13,6 @@ import {
 
 export default function AdminLocalizationUpdateScreen() {
   useEffect(() => {
-    setRoute("admin/localization");
     AuthVerify({
       isAdmin: true,
     });

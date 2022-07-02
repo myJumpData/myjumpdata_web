@@ -1,24 +1,22 @@
 import { useEffect, useState } from "react";
 import { useTranslation } from "react-i18next";
+import { HiCog } from "react-icons/hi";
+import { IoIosLogOut } from "react-icons/io";
 import { useSelector } from "react-redux";
 import { Link } from "react-router-dom";
 import AuthVerify from "../common/AuthVerify";
 import Button from "../components/Button";
 import { TextInput } from "../components/Input";
-import { setRoute } from "../redux/route.action";
 import {
   createGroup,
   getClub,
   getGroups,
   leaveClub,
 } from "../service/groups.service";
-import { HiCog } from "react-icons/hi";
-import { IoIosLogOut } from "react-icons/io";
 import { createTeam, getTeams } from "../service/team.service";
 
 export default function GroupsScreen() {
   useEffect(() => {
-    setRoute("group");
     AuthVerify();
   }, []);
 

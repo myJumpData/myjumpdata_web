@@ -6,14 +6,9 @@ import { useSearchParams } from "react-router-dom";
 import Button from "../components/Button";
 import { SelectInput, TextInput, TextInputInline } from "../components/Input";
 import SocketContext from "../context/SocketContext";
-import { setRoute } from "../redux/route.action";
 import api from "../service/api";
 
 export default function LiveScreen() {
-  useEffect(() => {
-    setRoute("live");
-  }, []);
-
   const socket = useContext(SocketContext);
 
   const [searchParams, setSearchParams] = useSearchParams({

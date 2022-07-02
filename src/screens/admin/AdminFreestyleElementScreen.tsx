@@ -1,10 +1,9 @@
 import classNames from "classnames";
-import i18next from "i18next";
 import { useEffect, useState } from "react";
 import { useTranslation } from "react-i18next";
 import { FaPlus } from "react-icons/fa";
 import { IoTrash } from "react-icons/io5";
-import { Outlet, useNavigate, useParams } from "react-router-dom";
+import { useNavigate, useParams } from "react-router-dom";
 import Flag from "react-world-flags";
 import AuthVerify from "../../common/AuthVerify";
 import AdminActionBar from "../../components/AdminActionBar";
@@ -12,7 +11,6 @@ import Breadcrumb from "../../components/Breadcrumb";
 import Button from "../../components/Button";
 import { TextInput, TextInputInline } from "../../components/Input";
 import { LANGUAGES } from "../../Constants";
-import { setRoute } from "../../redux/route.action";
 import {
   deleteFreestyle,
   getFreestyleElement,
@@ -25,12 +23,8 @@ import { getFreestyle } from "../../service/freestyle.service";
 
 export default function AdminFreestyleElementScreen() {
   useEffect(() => {
-    setRoute("admin/freestyle");
     AuthVerify({
       isAdmin: true,
-    });
-    i18next.loadNamespaces("freestyle").then(() => {
-      setLoaded(true);
     });
   }, []);
   const params = useParams();
@@ -53,7 +47,6 @@ export default function AdminFreestyleElementScreen() {
   const [newGroupValid, setNewGroupValid] = useState<undefined | boolean>();
   const [keyNew, setKeyNew] = useState<undefined | string>();
   const [keyNewValid, setKeyNewValid] = useState<undefined | boolean>();
-  const [loaded, setLoaded] = useState(false);
 
   const getData = () => {
     getFreestyleElement(params.id as string).then((response: any) => {
@@ -100,15 +93,11 @@ export default function AdminFreestyleElementScreen() {
     }
   }, [keyNew]);
 
-  if (!loaded) {
-    return <Outlet />;
-  }
-
   return (
     <>
       <AdminActionBar
         text={`${t<string>("common:nav_freestyle")}${
-          freestyleElementData && loaded
+          freestyleElementData
             ? ` - ${freestyleElementData.key
                 .split("_")
                 .map((item) => t<string>(`freestyle:${item}`))

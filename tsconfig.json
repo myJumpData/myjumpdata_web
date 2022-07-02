@@ -20,7 +20,9 @@
     "noEmit": true,
     "jsx": "react-jsx",
     "downlevelIteration": true,
-    "noImplicitAny": false
+    "noImplicitAny": false,
+    "noUnusedLocals": true,
+    "noUnusedParameters": true
   },
   "include": [
     "src",

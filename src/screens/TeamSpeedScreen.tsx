@@ -10,14 +10,12 @@ import AuthVerify from "../common/AuthVerify";
 import Button from "../components/Button";
 import { DateInput, TextInput } from "../components/Input";
 import { SpeedDataInput } from "../components/SpeedData";
-import { setRoute } from "../redux/route.action";
 import api from "../service/api";
 import { getTeam } from "../service/team.service";
 import TRACKS, { musicData } from "../tracks";
 
 export default function TeamSpeedScreen() {
   useEffect(() => {
-    setRoute("group");
     AuthVerify();
   }, []);
 

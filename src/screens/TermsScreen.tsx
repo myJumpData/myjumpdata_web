@@ -1,13 +1,8 @@
-import { ReactNode, useEffect } from "react";
+import { ReactNode } from "react";
 import { Link } from "react-router-dom";
 import undraw_terms from "../assets/undraw_terms_re_6ak4.svg";
-import { setRoute } from "../redux/route.action";
 
 export default function TermsScreen() {
-  useEffect(() => {
-    setRoute("terms");
-  }, []);
-
   return (
     <>
       <Jumbotron />

@@ -11,14 +11,12 @@ import Button from "../../components/Button";
 import { SelectInput } from "../../components/Input";
 import Table from "../../components/Table";
 import { LANGUAGES, NAMESPACES } from "../../Constants";
-import { setRoute } from "../../redux/route.action";
 import { deleteLocalization } from "../../service/admin.service";
 import api from "../../service/api";
 import { getTranslations } from "../../service/locales.service";
 
 export default function AdminLocalizationScreen() {
   useEffect(() => {
-    setRoute("admin/localization");
     AuthVerify({
       isAdmin: true,
     });
