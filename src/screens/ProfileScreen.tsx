@@ -1,11 +1,14 @@
 import { useEffect, useState } from "react";
 import { useTranslation } from "react-i18next";
+import { IoShareSocial } from "react-icons/io5";
 import { useParams } from "react-router";
+import { useMatch } from "react-router-dom";
 import { getUserSearch } from "../service/users.service";
 import fullname from "../utils/fullname";
 
 export default function ProfileScreen() {
   const params = useParams();
+  const route = useMatch("*");
   const { t } = useTranslation();
 
   const [user, setUser] = useState<any>();
@@ -39,6 +42,22 @@ export default function ProfileScreen() {
             {fullname(user)}
           </div>
         </div>
+        {navigator.share ? (
+          <div>
+            <span
+              className="text-xl bg-gray-500/25 rounded-full h-8 w-8 flex justify-center items-center"
+              onClick={() => {
+                navigator.share({
+                  title: fullname(user),
+                  text: `Checkout ${fullname(user)} on MyJumpData`,
+                  url: route?.pathname,
+                });
+              }}
+            >
+              <IoShareSocial />
+            </span>
+          </div>
+        ) : null}
       </div>
       <div>
         <span className="text-lg font-bold md:text-xl">
