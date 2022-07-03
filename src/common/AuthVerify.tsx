@@ -21,7 +21,7 @@ export default function AuthVerify(options?: { isAdmin?: boolean }) {
         });
       }
       if (options?.isAdmin && user.roles.includes("admin") === false) {
-        window.location.href = "/";
+        window.location.href = "/error/401";
       }
       return;
     }

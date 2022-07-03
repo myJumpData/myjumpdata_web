@@ -54,6 +54,8 @@ const AdminLocalizationCreateScreen = lazy(
   () => import("./screens/admin/AdminLocalizationCreateScreen")
 );
 const LiveScreen = lazy(() => import("./screens/LiveScreen"));
+const HTTPStatus = lazy(() => import("./screens/HTTPStatus"));
+const ErrorScreen = lazy(() => import("./screens/ErrorScreen"));
 
 export default function App() {
   return (
@@ -169,7 +171,8 @@ export default function App() {
             </Route>
             <Route path="*" element={<Navigate to="/admin" />} />
           </Route>
-          <Route path="*" element={<Navigate to="/" />} />
+          <Route path="error/:code" element={<ErrorScreen />} />
+          <Route path="*" element={<HTTPStatus code={404} />} />
         </Routes>
       </Wrapper>
     </BrowserRouter>
