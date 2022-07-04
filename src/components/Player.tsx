@@ -43,15 +43,11 @@ export default function Player() {
         ],
         [
           "previoustrack",
-          async () => {
-            await player.skipToPrevious();
-          },
+          skipToPrevious
         ],
         [
           "nexttrack",
-          async () => {
-            await player.skipToNext();
-          },
+          skipToNext
         ],
         [
           "stop",
@@ -74,6 +70,22 @@ export default function Player() {
       return;
     }
     player.play();
+  }
+
+  const skipToPrevious =async () => {
+    if (player.getQueue().length > 1){
+    await player.skipToPrevious();
+    }else{
+      player.seekTo(0)
+    }
+  }
+
+  const skipToNext =async () => {
+    if (player.getQueue().length > 1){
+      await player.skipToNext();
+    }else{
+      player.seekTo(0)
+    }
   }
 
   if (!currentTrack) {
@@ -139,9 +151,7 @@ export default function Player() {
                 </div>
                 <div className="flex w-full items-center justify-center">
                   <div
-                    onClick={() => {
-                      player.skipToPrevious();
-                    }}
+                    onClick={skipToPrevious}
                     className="cursor-pointer p-2"
                   >
                     <IoIosSkipBackward className="text-4xl sm:text-2xl" />
@@ -154,9 +164,7 @@ export default function Player() {
                     )}
                   </div>
                   <div
-                    onClick={() => {
-                      player.skipToNext();
-                    }}
+                    onClick={skipToNext}
                     className="cursor-pointer p-2"
                   >
                     <IoIosSkipForward className="text-4xl sm:text-2xl" />
