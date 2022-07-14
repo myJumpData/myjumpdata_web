@@ -3,7 +3,7 @@ import { io } from "socket.io-client";
 
 export const socket = io(
   process.env["NODE_ENV"] === "development"
-    ? "http://localhost:3131"
+    ? "http://localhost:3000"
     : "https://socket.myjumpdata.fediv.me",
   {
     transports: ["websocket"],
