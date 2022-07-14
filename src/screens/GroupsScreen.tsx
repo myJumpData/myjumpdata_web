@@ -53,6 +53,7 @@ export default function GroupsScreen() {
       setGroupName("");
     });
   }
+
   function handleCreateTeam() {
     createTeam(teamName.trim(), club?._id).then(() => {
       getGroupsFN();
@@ -119,11 +120,13 @@ export default function GroupsScreen() {
           </Link>
         </>
       ) : null}
-      <div className="w-full space-y-2">
-        <span className="text-xl font-bold">
-          {t<string>("common:nav_group")}
-        </span>
-      </div>
+      {club !== null ? (
+        <div className="w-full space-y-2">
+          <span className="text-xl font-bold">
+            {t<string>("common:nav_group")}
+          </span>
+        </div>
+      ) : null}
       {club === null ? (
         <div className="flex flex-col">
           <span className="mb-4 text-lg opacity-75">{t("club_notfound")}</span>
@@ -174,11 +177,13 @@ export default function GroupsScreen() {
           ) : null}
         </>
       )}
-      <div className="w-full space-y-2">
-        <span className="text-xl font-bold">
-          {t<string>("common:nav_team")}
-        </span>
-      </div>
+      {club !== null ? (
+        <div className="w-full space-y-2">
+          <span className="text-xl font-bold">
+            {t<string>("common:nav_team")}
+          </span>
+        </div>
+      ) : null}
       {club === null ? null : (
         <>
           <div className="flex flex-col space-y-4 sm:grid sm:grid-cols-2 sm:gap-4 sm:space-y-0 md:grid-cols-3 lg:grid-cols-4">
@@ -224,6 +229,7 @@ export default function GroupsScreen() {
       <LeaveOverlay />
     </>
   );
+
   function LeaveOverlay() {
     return (
       <div
